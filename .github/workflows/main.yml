@@ -1,0 +1,21 @@
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  java-spring-petclinic:
+    runs-on: ubuntu-latest
+    name: ChatGPT explain code
+    steps:
+      - name: ChatGTP explain code
+        uses: interactivedevops/chatgpt-codereview@main
+        with:
+          SONARQUBE_URL: ${{ secrets.SONARQUBE_URL }}
+          SONARQUBE_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+          SONARQUBE_PROJECT_KEY: ${{ secrets.SONARQUBE_PROJECT_KEY }}
+          CHATGPT_API_URL: ${{ secrets.CHATGPT_API_URL }}
+          CHATGPT_API_KEY: ${{ secrets.CHATGPT_API_KEY }}
+          CHATGPT_DEPLOYMENT_ID: ${{ secrets.CHATGPT_DEPLOYMENT_ID }}
+          GITHUB_PR_ID: ${{ github.event.number }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
