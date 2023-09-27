@@ -30,10 +30,6 @@ inputs:
     description: 'SonarQube Project Key'
     required: true
     default: ''
-  SONARQUBE_PROJECT_KEY:  # id of input
-    description: 'SonarQube Project Key'
-    required: true
-    default: ''
   GITHUB_PR_ID:  # id of input
     description: 'GitHub PR ID'
     required: true
