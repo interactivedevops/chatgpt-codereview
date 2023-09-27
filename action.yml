@@ -1,15 +1,57 @@
 # action.yml
 name: 'Code Review with ChatGPT'
 description: 'Automating code review using ChatGPT with Github Actions integration on PRs for code explanations.'
+inputs:
+  SONARQUBE_URL:  # id of input
+    description: 'SonarQube URL'
+    required: true
+    default: ''
+  SONARQUBE_TOKEN:  # id of input
+    description: 'SonarQube Token'
+    required: true
+    default: ''
+  CHATGPT_API_URL:  # id of input
+    description: 'ChatGPT URL'
+    required: true
+    default: ''
+  CHATGPT_API_KEY:  # id of input
+    description: 'ChatGPT API Key'
+    required: true
+    default: ''
+  CHATGPT_DEPLOYMENT_ID:  # id of input
+    description: 'ChatGPT Deployment Id'
+    required: true
+    default: ''
+  GH_TOKEN:  # id of input
+    description: 'GitHub Token'
+    required: true
+    default: ''
+  SONARQUBE_PROJECT_KEY:  # id of input
+    description: 'SonarQube Project Key'
+    required: true
+    default: ''
+  SONARQUBE_PROJECT_KEY:  # id of input
+    description: 'SonarQube Project Key'
+    required: true
+    default: ''
+  GITHUB_PR_ID:  # id of input
+    description: 'GitHub PR ID'
+    required: true
+    default: ''	
+  GITHUB_REPOSITORY:  # id of input
+    description: 'GitHub Repository'
+    required: true
+    default: ''			
 runs:
   using: 'docker'
   image: 'Dockerfile'
   env:
-    SONARQUBE_URL: ${{ secrets.SONARQUBE_URL }}
-    SONARQUBE_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
-    CHATGPT_API_URL: ${{ secrets.CHATGPT_API_URL }}
-    CHATGPT_API_KEY: ${{ secrets.CHATGPT_API_KEY }}
-    CHATGPT_DEPLOYMENT_ID: ${{ secrets.CHATGPT_DEPLOYMENT_ID }}
-    GITHUB_PR_ID: ${{ github.event.number }}
-    GH_TOKEN: ${{ secrets.GH_TOKEN }}
-    SONARQUBE_PROJECT_KEY:  ${{ secrets.SONARQUBE_PROJECT_KEY }}
+    SONARQUBE_URL: ${{ inputs.SONARQUBE_URL }}
+    SONARQUBE_TOKEN: ${{ inputs.SONARQUBE_TOKEN }}
+    CHATGPT_API_URL: ${{ inputs.CHATGPT_API_URL }}
+    CHATGPT_API_KEY: ${{ inputs.CHATGPT_API_KEY }}
+    CHATGPT_DEPLOYMENT_ID: ${{ inputs.CHATGPT_DEPLOYMENT_ID }}
+    GITHUB_PR_ID: ${{ inputs.GITHUB_PR_ID }}
+    GH_TOKEN: ${{ inputs.GH_TOKEN }}
+	  GITHUB_REPOSITORY: ${{ inputs.GITHUB_REPOSITORY }}
+    SONARQUBE_PROJECT_KEY:  ${{ inputs.SONARQUBE_PROJECT_KEY }}
