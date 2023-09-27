@@ -50,7 +50,6 @@ def generate_code_review_comments(sonarqube_issues):
     if sonarqube_issues is None:
         return []  # Return an empty list if there was an issue with fetching SonarQube issues
     comments = []
-
     for issue in sonarqube_issues['issues']:
         # Extract relevant information from SonarQube issue
         issue_key = issue['key']
@@ -76,6 +75,7 @@ def generate_code_review_comments(sonarqube_issues):
 
 # add comment in PR
 def add_pr_comment(file_name, severity, line, type, message):
+    # repo = g.get_repo(os.getenv('GITHUB_REPOSITORY'))
     repo = g.get_repo(GITHUB_REPOSITORY)
     pull_request = repo.get_pull(int(GITHUB_PR_ID))
 
